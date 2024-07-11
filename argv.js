@@ -1,41 +1,42 @@
 /**
- * 2021/08/17
- * V2.0.0
+ * 2024/07/11
+ * V2.0.1
  */
-const Argv = process.argv;
-let HelpTextArray = [];
+const argv = process.argv;
+let helpTexts = [];
 
 /**
  * 
- * @param {string} Name Argv參數名稱 
- * @returns Argv參數內容
+ * @param {string} argvName argv參數名稱 
+ * @returns argv參數內容
  */
-const Inq = (Name) => {
-	const Index = Argv.indexOf(`-` + Name);
-	if (Index != -1) {
-		return Argv[Index + 1];
+const inq = (argvName) => {
+	const index = argv.indexOf(`-` + argvName);
+	if (index != -1) {
+		return argv[index + 1];
 	} else {
 		return null;
 	}
 };
-const Help = {
+const help = {
 	/**
-	 * 增加Help訊息
-	 * @param {string} Text 
+	 * 增加help訊息
+	 * @param {string} helpText 
 	 */
-	Add: (Text) => {
-		HelpTextArray.push(Text);
+	add: (helpText) => {
+		helpTexts.push(helpText);
 	},
 	/**
-	 * 印出Help訊息
+	 * 印出help訊息
 	 */
-	Show: () => {
-		if (Argv.indexOf(`-help`) != -1 || Argv.indexOf(`-?`) != -1)
-			HelpTextArray.forEach((HelpText) => console.log(HelpText));
+	show: () => {
+		if (argv.indexOf(`-help`) != -1 || argv.indexOf(`-?`) != -1) {
+			helpTexts.forEach((helpText) => console.log(helpText));
+		}
 	}
 };
 
 module.exports = {
-	Inq: Inq,
-	Help: Help
+	inq: inq,
+	help: help
 }
