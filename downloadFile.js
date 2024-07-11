@@ -1,5 +1,7 @@
-// 2023/09/18
-// V2.0.1
+/**
+ * 2024/07/21
+ * V2.0.2
+ */
 
 const fs = require(`fs`);
 const request = require(`request`);
@@ -15,9 +17,9 @@ const downloadFile = (url, fileName) => {
 		request(url).pipe(fs.createWriteStream(fileName).on(`close`, (err, response) => {
 			if (err) {
 				console.error(err);
-				rej();
+				rej(err);
 			} else {
-				res();
+				res(response);
 			}
 		}));
 	});
