@@ -1,12 +1,14 @@
-// 2021/08/17
-// V2.0.0
+/**
+ * 2021/08/17
+ * V2.0.0
+ */
 const Argv = process.argv;
 let HelpTextArray = [];
 
 /**
  * 
- * @param {*} Name 
- * @returns 
+ * @param {string} Name Argv參數名稱 
+ * @returns Argv參數內容
  */
 const Inq = (Name) => {
 	const Index = Argv.indexOf(`-` + Name);
@@ -17,14 +19,22 @@ const Inq = (Name) => {
 	}
 };
 const Help = {
+	/**
+	 * 增加Help訊息
+	 * @param {string} Text 
+	 */
 	Add: (Text) => {
 		HelpTextArray.push(Text);
 	},
+	/**
+	 * 印出Help訊息
+	 */
 	Show: () => {
 		if (Argv.indexOf(`-help`) != -1 || Argv.indexOf(`-?`) != -1)
 			HelpTextArray.forEach((HelpText) => console.log(HelpText));
 	}
 };
+
 module.exports = {
 	Inq: Inq,
 	Help: Help
